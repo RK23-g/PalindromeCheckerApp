@@ -13,7 +13,7 @@ public class PalindromeCheckerApp {
         System.out.println("Application is ready to check palindromes.");
 
         // ================= UC2 =================
-        // Hardcoded palindrome check
+        // Hardcoded palindrome check using StringBuilder
         String uc2Word = "madam";
 
         if (uc2Word.equals(new StringBuilder(uc2Word).reverse().toString())) {
@@ -26,19 +26,43 @@ public class PalindromeCheckerApp {
 
         // ================= UC3 =================
         // Palindrome check by reversing using loop
-        String original = "level";   // hardcoded string for UC3
+        String original = "level";
         String reversed = "";
 
-        // Reverse string using for loop
         for (int i = original.length() - 1; i >= 0; i--) {
             reversed = reversed + original.charAt(i);
         }
 
-        // Compare original and reversed
         if (original.equals(reversed)) {
             System.out.println("UC3 Result: \"" + original + "\" is a Palindrome");
         } else {
             System.out.println("UC3 Result: \"" + original + "\" is NOT a Palindrome");
+        }
+        // =======================================
+
+
+        // ================= UC4 =================
+        // Palindrome check using char array & two-pointer approach
+        String uc4Word = "radar";
+
+        char[] chars = uc4Word.toCharArray();
+        int start = 0;
+        int end = chars.length - 1;
+        boolean isPalindrome = true;
+
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
+        }
+
+        if (isPalindrome) {
+            System.out.println("UC4 Result: \"" + uc4Word + "\" is a Palindrome");
+        } else {
+            System.out.println("UC4 Result: \"" + uc4Word + "\" is NOT a Palindrome");
         }
         // =======================================
     }
